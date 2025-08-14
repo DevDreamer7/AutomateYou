@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -24,19 +23,19 @@ const projects = [
   {
     title: 'Automated Client Onboarding',
     description: 'A complete n8n workflow to automate new client onboarding, from contract signing to project setup in Asana.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/automated-client-onboarding.png',
     hint: 'workflow diagram',
   },
   {
     title: 'E-commerce Order Sync',
     description: 'Syncs orders between Shopify and a custom CRM via API, ensuring real-time data consistency.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/ecommerce-order-sync.png',
     hint: 'data flow',
   },
   {
     title: 'Daily Reporting Bot',
     description: 'A Python script deployed with n8n that aggregates daily sales data and sends a formatted report to Slack.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/images/daily-reporting-bot.png',
     hint: 'slack notification',
   },
 ];
