@@ -25,6 +25,8 @@ export function CursorGlow() {
   const [isPointer, setIsPointer] = useState(false);
   const [isText, setIsText] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
 
   useEffect(() => {
     setIsClient(true);
@@ -34,6 +36,7 @@ export function CursorGlow() {
     if (!isClient) return;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!isVisible) setIsVisible(true);
       setPosition({ x: e.clientX, y: e.clientY });
 
       const target = e.target as HTMLElement;
@@ -47,22 +50,38 @@ export function CursorGlow() {
           !isTextInput && (computedStyle.cursor === 'pointer' || isButtonOrAnchor || hasPointerClass)
         );
         setIsText(isTextInput);
+
+        if (isTextInput) {
+          document.body.style.cursor = 'none';
+        } else {
+          document.body.style.cursor = '';
+        }
+
+      }
+    };
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      // Check if the mouse is leaving the viewport
+      if (!e.relatedTarget && !e.toElement) {
+        setIsVisible(false);
       }
     };
     
     document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseout', handleMouseLeave);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseout', handleMouseLeave);
     };
-  }, [isClient]);
+  }, [isClient, isVisible]);
 
   if (!isClient) {
     return null;
   }
 
   return (
-    <>
+    <div className={cn(!isVisible && 'opacity-0')}>
       <div
         className={cn(
             "pointer-events-none fixed inset-0 z-[9999] transition-opacity duration-300",
@@ -86,6 +105,6 @@ export function CursorGlow() {
       >
         <CustomCursor className={cn(isPointer || isText ? 'rotate-0' : '')}/>
       </div>
-    </>
+    </div>
   );
 }
