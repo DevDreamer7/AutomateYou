@@ -2,7 +2,6 @@
 'use client';
 
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Linkedin, Github, Download, Briefcase, GraduationCap } from 'lucide-react';
 import { ContactForm } from '@/components/contact-form';
@@ -10,6 +9,7 @@ import React, { useRef, useEffect } from 'react';
 import { useScrollSpy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
 import { AnimatedSkillBar } from '@/components/animated-skill-bar';
+import { MagneticButton } from '@/components/magnetic-button';
 
 const skills = [
   { name: 'n8n', level: 95 },
@@ -147,17 +147,17 @@ export default function Home() {
             Automation Specialist / <span className="text-primary">n8n Expert</span>
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up [animation-delay:300ms]">
-            <Button size="lg" asChild>
+            <MagneticButton>
               <a href="#contact">
                 Hire Me
               </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
+            </MagneticButton>
+            <MagneticButton variant="outline">
                <a href="/alex-doe-cv.pdf" download>
                 <Download className="mr-2 h-5 w-5" />
                 Download CV
               </a>
-            </Button>
+            </MagneticButton>
           </div>
           <div className="flex items-center gap-6 mt-12 animate-fade-in-up [animation-delay:450ms]">
             <a href="mailto:alex.doe@example.com" aria-label="Email" className="text-muted-foreground hover:text-primary transition-colors"><Mail className="h-6 w-6" /></a>
@@ -243,3 +243,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
