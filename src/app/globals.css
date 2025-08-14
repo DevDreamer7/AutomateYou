@@ -90,6 +90,10 @@
   input, textarea {
     caret-color: hsl(var(--primary));
   }
+  
+  .scroll-blur {
+    filter: blur(4px);
+  }
 
   @keyframes-fade-in-up {
     from {
