@@ -5,6 +5,21 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { MousePointer2 } from 'lucide-react';
 
+const CustomCursor = ({ className }: { className?: string }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="hsl(var(--primary))"
+    xmlns="http://www.w3.org/2000/svg"
+    className={cn("transform -rotate-12", className)}
+    style={{ stroke: "hsl(var(--primary-foreground))", strokeWidth: 1.5, strokeLinejoin: 'round', strokeLinecap: 'round' }}
+  >
+    <path d="M4.5 4.5L20.5 10.5L13.5 13.5L10.5 20.5L4.5 4.5Z" />
+  </svg>
+);
+
+
 export function CursorGlow() {
   const [position, setPosition] = useState({ x: -200, y: -200 });
   const [isPointer, setIsPointer] = useState(false);
@@ -54,14 +69,16 @@ export function CursorGlow() {
       
       <div
         className={cn(
-          'pointer-events-none fixed z-[9999] -translate-x-1/2 -translate-y-1/2 rounded-full transition-transform duration-200 ease-in-out',
-          isPointer ? 'h-8 w-8 bg-primary/20' : 'h-3 w-3 bg-primary'
+          'pointer-events-none fixed z-[9999] transition-transform duration-200 ease-in-out',
+           isPointer ? 'scale-150 -translate-x-1 -translate-y-1' : ''
         )}
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
         }}
-      />
+      >
+        <CustomCursor className={cn(isPointer ? 'rotate-0' : '')}/>
+      </div>
     </>
   );
 }
