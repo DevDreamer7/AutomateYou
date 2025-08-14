@@ -12,8 +12,8 @@ interface AnimatedSkillBarProps {
 
 export function AnimatedSkillBar({ name, level, animationDelay = 0 }: AnimatedSkillBarProps) {
   const [progress, setProgress] = useState(0);
-  const [percent, setPercent] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const animationDuration = 1500; // ms
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,44 +30,29 @@ export function AnimatedSkillBar({ name, level, animationDelay = 0 }: AnimatedSk
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [level, animationDelay]);
-
-  useEffect(() => {
-    if (progress > 0) {
-      let start = 0;
-      const end = level;
-      if (start === end) return;
-
-      const duration = 1500; // Slower animation
-      const incrementTime = (duration / end);
-      
-      const timer = setInterval(() => {
-        start += 1;
-        setPercent(start);
-        if (start === end) clearInterval(timer);
-      }, incrementTime);
-
-      return () => clearInterval(timer);
-    }
-  }, [progress, level]);
-
 
   return (
     <div ref={ref}>
       <div className="flex justify-between items-end mb-2">
         <h3 className="text-lg font-medium">{name}</h3>
-        <p className="text-sm text-primary font-mono">{percent}%</p>
+        <p className="text-sm text-primary font-mono">{progress}%</p>
       </div>
-      <Progress value={progress} className="h-3 bg-primary/20" />
+      <Progress 
+        value={progress} 
+        className="h-3 bg-primary/20" 
+        style={{ transitionDuration: `${animationDuration}ms`}} 
+      />
     </div>
   );
 }
