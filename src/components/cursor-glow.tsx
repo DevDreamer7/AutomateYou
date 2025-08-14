@@ -23,6 +23,7 @@ const CustomCursor = ({ className }: { className?: string }) => (
 export function CursorGlow() {
   const [position, setPosition] = useState({ x: -200, y: -200 });
   const [isPointer, setIsPointer] = useState(false);
+  const [isText, setIsText] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -40,10 +41,12 @@ export function CursorGlow() {
         const computedStyle = window.getComputedStyle(target);
         const isButtonOrAnchor = target.tagName === 'BUTTON' || target.tagName === 'A';
         const hasPointerClass = target.classList.contains('cursor-pointer');
+        const isTextInput = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA';
         
         setIsPointer(
-          computedStyle.cursor === 'pointer' || isButtonOrAnchor || hasPointerClass
+          !isTextInput && (computedStyle.cursor === 'pointer' || isButtonOrAnchor || hasPointerClass)
         );
+        setIsText(isTextInput);
       }
     };
     
@@ -61,7 +64,10 @@ export function CursorGlow() {
   return (
     <>
       <div
-        className="pointer-events-none fixed inset-0 z-[9999] transition-opacity duration-300"
+        className={cn(
+            "pointer-events-none fixed inset-0 z-[9999] transition-opacity duration-300",
+            isText && "opacity-0"
+        )}
         style={{
           background: `radial-gradient(600px at ${position.x}px ${position.y}px, hsla(var(--primary) / 0.15), transparent 80%)`,
         }}
@@ -70,11 +76,13 @@ export function CursorGlow() {
       <div
         className={cn(
           'pointer-events-none fixed z-[9999] transition-transform duration-200 ease-in-out',
-           isPointer ? 'scale-150 -translate-x-1 -translate-y-1' : ''
+           isPointer ? 'scale-150 -translate-x-1 -translate-y-1' : '',
+           isText ? 'opacity-0' : 'opacity-100'
         )}
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
+          transform: `translate(-50%, -50%) ${isPointer ? 'scale(1.5)' : 'scale(1)'}`,
         }}
       >
         <CustomCursor className={cn(isPointer ? 'rotate-0' : '')}/>

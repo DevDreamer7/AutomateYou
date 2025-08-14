@@ -64,6 +64,9 @@
   a, button, .cursor-pointer {
     cursor: none;
   }
+  input, textarea {
+    cursor: auto;
+  }
 }
 
 @layer utilities {
