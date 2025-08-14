@@ -134,7 +134,7 @@ export default function Home() {
         {/* Hero Section */}
         <section id="home" ref={useRef<HTMLDivElement>(null)} className="container mx-auto flex flex-col items-center justify-center text-center min-h-[calc(100vh-56px)] px-4 py-20">
           <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 animate-fade-in-up">
-            {'Alex Doe'.split('').map((letter, index) => (
+            {'Aagaman Thapa'.split('').map((letter, index) => (
               <span
                 key={index}
                 className="inline-block transition-all duration-300 ease-in-out hover:text-primary hover:-translate-y-3"
@@ -152,7 +152,7 @@ export default function Home() {
                 Hire Me
               </MagneticButton>
             </a>
-            <a href="/alex-doe-cv.pdf" download>
+            <a href="/aagaman-thapa-cv.pdf" download>
               <MagneticButton variant="outline">
                 <Download className="mr-2 h-5 w-5" />
                 Download CV
@@ -160,7 +160,7 @@ export default function Home() {
             </a>
           </div>
           <div className="flex items-center gap-6 mt-12 animate-fade-in-up [animation-delay:450ms]">
-            <a href="mailto:alex.doe@example.com" aria-label="Email" className="text-muted-foreground hover:text-primary transition-colors"><Mail className="h-6 w-6" /></a>
+            <a href="mailto:aagaman.thapa@example.com" aria-label="Email" className="text-muted-foreground hover:text-primary transition-colors"><Mail className="h-6 w-6" /></a>
             <a href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin className="h-6 w-6" /></a>
             <a href="#" aria-label="GitHub" className="text-muted-foreground hover:text-primary transition-colors"><Github className="h-6 w-6" /></a>
           </div>
@@ -237,7 +237,7 @@ export default function Home() {
 
       <footer className="border-t border-border/40 py-6">
         <div className="container mx-auto text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Alex Doe. All rights reserved.
+          © {new Date().getFullYear()} Aagaman Thapa. All rights reserved.
         </div>
       </footer>
     </div>
