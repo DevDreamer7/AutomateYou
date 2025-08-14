@@ -142,7 +142,7 @@ export default function Home() {
                 key={index}
                 className="inline-block transition-all duration-300 ease-in-out hover:text-primary hover:-translate-y-3"
               >
-                {letter === ' ' ? ' ' : letter}
+                {letter === ' ' ? '\u00A0' : letter}
               </span>
             ))}
           </h1>
