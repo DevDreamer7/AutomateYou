@@ -3,7 +3,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { submitContactForm } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Button } from '@/components/ui/button';
@@ -21,28 +20,37 @@ const formSchema = z.object({
 
 export function ContactForm() {
   const { toast } = useToast();
-  const [isPending, startTransition] = React.useTransition();
+  const [isPending, setIsPending] = React.useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { name: "", email: "", message: "" },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsPending(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
 
-    startTransition(async () => {
-      const result = await submitContactForm({ message: '', status: 'idle' }, formData);
-      if (result.status === 'success') {
+      const result = await response.json();
+
+      if (response.ok) {
         toast({ title: 'Success!', description: result.message });
         form.reset();
       } else {
         toast({ title: 'Error', description: result.message, variant: 'destructive' });
       }
-    });
+    } catch (error) {
+      toast({ title: 'Error', description: 'Something went wrong.', variant: 'destructive' });
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
