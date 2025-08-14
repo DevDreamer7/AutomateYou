@@ -66,7 +66,6 @@ export function CursorGlow() {
       <div
         className={cn(
             "pointer-events-none fixed inset-0 z-[9999] transition-opacity duration-300",
-            isText && "opacity-0"
         )}
         style={{
           background: `radial-gradient(600px at ${position.x}px ${position.y}px, hsla(var(--primary) / 0.15), transparent 80%)`,
@@ -77,15 +76,15 @@ export function CursorGlow() {
         className={cn(
           'pointer-events-none fixed z-[9999] transition-transform duration-200 ease-in-out',
            isPointer ? 'scale-150 -translate-x-1 -translate-y-1' : '',
-           isText ? 'opacity-0' : 'opacity-100'
+           isText ? 'opacity-100' : 'opacity-100'
         )}
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
-          transform: `translate(-50%, -50%) ${isPointer ? 'scale(1.5)' : 'scale(1)'}`,
+          transform: `translate(-50%, -50%) ${isPointer || isText ? 'scale(1.5)' : 'scale(1)'}`,
         }}
       >
-        <CustomCursor className={cn(isPointer ? 'rotate-0' : '')}/>
+        <CustomCursor className={cn(isPointer || isText ? 'rotate-0' : '')}/>
       </div>
     </>
   );
