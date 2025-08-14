@@ -92,7 +92,7 @@
   }
   
   .scroll-blur {
-    filter: blur(4px);
+    filter: blur(8px);
   }
 
   @keyframes-fade-in-up {
