@@ -4,12 +4,12 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { Mail, Linkedin, Github, Download, Briefcase, GraduationCap } from 'lucide-react';
 import { ContactForm } from '@/components/contact-form';
 import React, { useRef, useEffect } from 'react';
 import { useScrollSpy } from '@/hooks/use-scrollspy';
 import { cn } from '@/lib/utils';
+import { AnimatedSkillBar } from '@/components/animated-skill-bar';
 
 const skills = [
   { name: 'n8n', level: 95 },
@@ -184,13 +184,7 @@ export default function Home() {
              <h2 className="font-headline text-4xl font-bold text-center mb-12">Skills & Expertise</h2>
              <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                {skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between items-end mb-2">
-                     <h3 className="text-lg font-medium">{skill.name}</h3>
-                     <p className="text-sm text-primary font-mono">{skill.level}%</p>
-                  </div>
-                   <Progress value={skill.level} className="h-3 bg-primary/20" />
-                </div>
+                <AnimatedSkillBar key={skill.name} name={skill.name} level={skill.level} />
               ))}
             </div>
            </div>
