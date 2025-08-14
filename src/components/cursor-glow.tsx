@@ -13,7 +13,7 @@ const CustomCursor = ({ className }: { className?: string }) => (
     fill="hsl(var(--primary))"
     xmlns="http://www.w3.org/2000/svg"
     className={cn("transform -rotate-12", className)}
-    style={{ stroke: "hsl(var(--primary-foreground))", strokeWidth: 1.5, strokeLinejoin: 'round', strokeLinecap: 'round' }}
+    style={{ strokeLinejoin: 'round', strokeLinecap: 'round' }}
   >
     <path d="M4.5 4.5L20.5 10.5L13.5 13.5L10.5 20.5L4.5 4.5Z" />
   </svg>
