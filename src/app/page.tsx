@@ -23,19 +23,19 @@ const projects = [
   {
     title: 'Automated Client Onboarding',
     description: 'A complete n8n workflow to automate new client onboarding, from contract signing to project setup in Asana.',
-    image: '/images/automated-client-onboarding.png',
+    image: '/images/automated-client-onboarding.jpg',
     hint: 'workflow diagram',
   },
   {
     title: 'E-commerce Order Sync',
     description: 'Syncs orders between Shopify and a custom CRM via API, ensuring real-time data consistency.',
-    image: '/images/ecommerce-order-sync.png',
+    image: '/images/ecommerce-order-sync.jpg',
     hint: 'data flow',
   },
   {
     title: 'Daily Reporting Bot',
     description: 'A Python script deployed with n8n that aggregates daily sales data and sends a formatted report to Slack.',
-    image: '/images/daily-reporting-bot.png',
+    image: '/images/daily-reporting-bot.jpg',
     hint: 'slack notification',
   },
 ];
