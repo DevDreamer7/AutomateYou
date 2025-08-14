@@ -134,7 +134,14 @@ export default function Home() {
         {/* Hero Section */}
         <section id="home" ref={useRef<HTMLDivElement>(null)} className="container mx-auto flex flex-col items-center justify-center text-center min-h-[calc(100vh-56px)] px-4 py-20">
           <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 animate-fade-in-up">
-            Alex Doe
+            {'Alex Doe'.split('').map((letter, index) => (
+              <span
+                key={index}
+                className="inline-block transition-all duration-300 ease-in-out hover:text-primary hover:-translate-y-3"
+              >
+                {letter === ' ' ? '\u00A0' : letter}
+              </span>
+            ))}
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mb-8 animate-fade-in-up [animation-delay:150ms]">
             Automation Specialist / <span className="text-primary">n8n Expert</span>
