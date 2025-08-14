@@ -183,8 +183,8 @@ export default function Home() {
            <div className="container mx-auto px-4">
              <h2 className="font-headline text-4xl font-bold text-center mb-12">Skills & Expertise</h2>
              <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-               {skills.map((skill) => (
-                <AnimatedSkillBar key={skill.name} name={skill.name} level={skill.level} />
+               {skills.map((skill, index) => (
+                <AnimatedSkillBar key={skill.name} name={skill.name} level={skill.level} animationDelay={index * 200} />
               ))}
             </div>
            </div>

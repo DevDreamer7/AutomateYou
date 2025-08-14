@@ -7,9 +7,10 @@ import { Progress } from '@/components/ui/progress';
 interface AnimatedSkillBarProps {
   name: string;
   level: number;
+  animationDelay?: number;
 }
 
-export function AnimatedSkillBar({ name, level }: AnimatedSkillBarProps) {
+export function AnimatedSkillBar({ name, level, animationDelay = 0 }: AnimatedSkillBarProps) {
   const [progress, setProgress] = useState(0);
   const [percent, setPercent] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -18,7 +19,9 @@ export function AnimatedSkillBar({ name, level }: AnimatedSkillBarProps) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setProgress(level);
+          setTimeout(() => {
+            setProgress(level);
+          }, animationDelay);
           observer.unobserve(entry.target);
         }
       },
@@ -36,7 +39,7 @@ export function AnimatedSkillBar({ name, level }: AnimatedSkillBarProps) {
         observer.unobserve(ref.current);
       }
     };
-  }, [level]);
+  }, [level, animationDelay]);
 
   useEffect(() => {
     if (progress > 0) {
@@ -44,7 +47,7 @@ export function AnimatedSkillBar({ name, level }: AnimatedSkillBarProps) {
       const end = level;
       if (start === end) return;
 
-      const duration = 1000;
+      const duration = 1500; // Slower animation
       const incrementTime = (duration / end);
       
       const timer = setInterval(() => {
