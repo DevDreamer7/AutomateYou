@@ -14,11 +14,10 @@ import { useScrollBlur } from '@/hooks/use-scroll-blur';
 
 const skills = [
   { name: 'n8n', level: 95 },
-  { name: 'API Integration', level: 90 },
-  { name: 'Python', level: 85 },
+  { name: 'API Integration', level: 70 },
+  { name: 'Python', level: 80 },
   { name: 'JavaScript / TypeScript', level: 80 },
   { name: 'Webhooks & Automation Workflows', level: 95 },
-  { name: 'Database Management', level: 75 },
 ];
 
 const projects = [
