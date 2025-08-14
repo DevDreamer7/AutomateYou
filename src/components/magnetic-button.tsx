@@ -38,7 +38,7 @@ export function MagneticButton({ children, className, variant, ...props }: Butto
       {...props}
     >
       <span
-        className="absolute bg-white/20 rounded-full pointer-events-none transform -translate-x-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"
+        className="absolute bg-white/20 rounded-full pointer-events-none transform -translate-x-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 transition-transform duration-1000 ease-out"
         style={rippleStyle}
       />
       <span className="relative z-10 inline-flex items-center justify-center">
@@ -47,5 +47,7 @@ export function MagneticButton({ children, className, variant, ...props }: Butto
     </Button>
   );
 }
+
+    
 
     

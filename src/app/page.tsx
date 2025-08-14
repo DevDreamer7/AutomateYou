@@ -147,17 +147,17 @@ export default function Home() {
             Automation Specialist / <span className="text-primary">n8n Expert</span>
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up [animation-delay:300ms]">
-            <MagneticButton>
-              <a href="#contact">
+            <a href="#contact">
+              <MagneticButton>
                 Hire Me
-              </a>
-            </MagneticButton>
-            <MagneticButton variant="outline">
-               <a href="/alex-doe-cv.pdf" download>
+              </MagneticButton>
+            </a>
+            <a href="/alex-doe-cv.pdf" download>
+              <MagneticButton variant="outline">
                 <Download className="mr-2 h-5 w-5" />
                 Download CV
-              </a>
-            </MagneticButton>
+              </MagneticButton>
+            </a>
           </div>
           <div className="flex items-center gap-6 mt-12 animate-fade-in-up [animation-delay:450ms]">
             <a href="mailto:alex.doe@example.com" aria-label="Email" className="text-muted-foreground hover:text-primary transition-colors"><Mail className="h-6 w-6" /></a>
@@ -243,5 +243,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
