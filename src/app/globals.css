@@ -66,7 +66,6 @@
   }
   input, textarea {
     cursor: auto;
-    caret-color: hsl(var(--primary));
   }
 }
 
@@ -86,6 +85,10 @@
   .is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  input, textarea {
+    caret-color: hsl(var(--primary));
   }
 
   @keyframes-fade-in-up {
