@@ -3,7 +3,7 @@
 
 import { useEffect, RefObject } from 'react';
 
-export function useScrollBlur(ref: RefObject<HTMLElement>, timeout = 100) {
+export function useScrollBlur(ref: RefObject<HTMLElement>, timeout = 150) {
   useEffect(() => {
     const target = ref.current;
     if (!target) return;

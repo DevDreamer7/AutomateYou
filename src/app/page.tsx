@@ -135,7 +135,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main ref={mainRef} className="flex-grow transition-all duration-150">
+      <main ref={mainRef} className="flex-grow">
         {/* Hero Section */}
         <section id="home" ref={useRef<HTMLDivElement>(null)} className="container mx-auto flex flex-col items-center justify-center text-center min-h-[calc(100vh-56px)] px-4 py-20">
           <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 animate-fade-in-up">

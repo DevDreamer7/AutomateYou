@@ -95,6 +95,11 @@
     filter: blur(8px);
   }
 
+  main {
+    transition: filter 0.15s linear;
+  }
+
+
   @keyframes-fade-in-up {
     from {
       opacity: 0;
